@@ -4,8 +4,8 @@ services:
     build:
       context: ./cfssl_server
     image: resetsa/cfssl-server:0.1 
-    container_name: cfssl-server
-    hostname: cfssl-server
+    container_name: autoca
+    hostname: autoca
     domainname: home.lan
     volumes:
       - type: volume
@@ -16,7 +16,7 @@ services:
         ipv4_address: 192.168.40.113
     restart: unless-stopped
 
-  cfssl_client:
+  cfssl-client:
     build:
       context: ./cfssl_client
     hostname: cfssl-client
