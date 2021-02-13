@@ -1,0 +1,16 @@
+{
+    "CN": "autoca-tls",
+    "Hosts": [ "autoca.home.lan", "autoca", "192.168.40.113"],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "CN": "centos7-t119_ecdsa",
+    "Hosts": [ "centos7-t119.home.lan", "centos7-t119", "192.168.40.119"],
+    "key": {
+        "algo": "ecdsa",
+        "size": 256
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}

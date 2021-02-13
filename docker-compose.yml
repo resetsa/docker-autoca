@@ -1,0 +1,47 @@
+version: "3.6"
+services:
+  cfssl-server:
+    build:
+      context: ./cfssl_server
+    image: resetsa/cfssl-server:0.1 
+    container_name: cfssl-server
+    hostname: cfssl-server
+    domainname: home.lan
+    volumes:
+      - type: volume
+        source: VOLUME_SERVER
+        target: /data
+    networks:
+      external_net:
+        ipv4_address: 192.168.40.113
+    restart: unless-stopped
+
+  cfssl_client:
+    build:
+      context: ./cfssl_client
+    hostname: cfssl-client
+    domainname: home.lan
+    volumes:
+      - type: volume
+        source: VOLUME_CLIENT
+        target: /data
+    networks:
+      external_net:
+        ipv4_address: 192.168.40.112
+    image: resetsa/cfssl-client:0.2
+    container_name: cfssl_client
+
+volumes:
+  VOLUME_SERVER:
+    driver: local-persist
+    driver_opts:
+      mountpoint: "$PWD/cfssl_server/data"
+  VOLUME_CLIENT:
+    driver: local-persist
+    driver_opts:
+      mountpoint: "$PWD/cfssl_client/data"
+
+networks:
+  external_net:
+    external:
+      name: SERVERS-DOCKER
