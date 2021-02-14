@@ -1,8 +1,18 @@
 {
     "signing": {
-        "default": {
-            "auth_key": "hidden-key",
-            "remote": "server"
+        "profiles": {
+            "ocsp": {
+                "auth_remote": {
+                    "auth_key": "hidden-key",
+                    "remote": "server"
+                }
+            },
+            "custom": {
+                "auth_remote": {
+                    "auth_key": "hidden-key",
+                    "remote": "server"
+                }
+            }
         }
     },
     "auth_keys": {

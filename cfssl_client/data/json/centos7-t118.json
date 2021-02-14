@@ -1,0 +1,16 @@
+{
+    "CN": "centos7-t118",
+    "Hosts": [ "centos7-t118.home.lan", "centos7-t118", "192.168.40.118"],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}

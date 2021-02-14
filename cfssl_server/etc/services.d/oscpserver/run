@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv sh
+
+/usr/bin/cfssl ocsprefresh -ca $CA_CERT -db-config /data/db_config.json -responder $RESP_CERT -responder-key $RESP_KEY -loglevel=0
+s6-setuidgid daemon /usr/bin/cfssl ocspserve -port 8889 -address 0.0.0.0 -ca $CA_CERT -ca-key $CA_KEY -config /data/config.json -db-config /data/db_config.json -loglevel 0

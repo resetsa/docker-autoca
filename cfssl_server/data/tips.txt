@@ -1,0 +1,6 @@
+Revocation certs - serial and aki see in certificate.
+Example:
+cfssl revoke -db-config db_config.json -serial 408778393775947140755537873092889871724340601555 -aki d885cb2f952df34202ce770a14d386a32100f465 -reason superseded
+
+Show certificate properties - serial/aki
+cfssl certinfo -cert centos7-t118.pem

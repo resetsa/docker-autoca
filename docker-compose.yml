@@ -3,7 +3,7 @@ services:
   cfssl-server:
     build:
       context: ./cfssl_server
-    image: resetsa/cfssl-server:0.1 
+    image: resetsa/cfssl-server:0.3 
     container_name: autoca
     hostname: autoca
     domainname: home.lan

@@ -1,9 +1,19 @@
 {
     "signing": {
+        "default": {
+            "remote": "server"
+        },   
         "profiles": {
-            "default": {
-                "usages": ["signing", "key encipherment", "server auth", "client auth"],
+            "ocsp": {
+                "usages": ["digital signature", "ocsp signing"],
                 "expiry": "8760h",
+                "auth_key": "hidden-key"
+                },
+            "custom": {
+                "ocsp_url": "http://autoca.home.lan:8889",
+                "crl_url": "http://autoca.home.lan/crl/autoca.crl",
+                "usages": ["signing", "key encipherment", "server auth", "client auth"],
+                "expiry": "10m",
                 "auth_key": "hidden-key"
             }
         }
@@ -15,6 +25,6 @@
         }
     },
     "remotes": {
-        "localhost": "127.0.0.1:8888"
+        "server": "http://autoca.home.lan"
     }
 }
