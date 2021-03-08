@@ -2,4 +2,5 @@
 *.crt
 *.csr
 *.db
+*.crl
 cfssl_client/.ssh/
