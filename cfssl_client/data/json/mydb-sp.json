@@ -1,0 +1,16 @@
+{
+    "CN": "mydb-sp.home.lan",
+    "Hosts": [ "mydb-sp.home.lan", "mydb-sp", "192.168.40.31"],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "CN": "dashboard",
+    "Hosts": [ "dashboard.home.lan", "dashboard", "192.168.40.111"],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}

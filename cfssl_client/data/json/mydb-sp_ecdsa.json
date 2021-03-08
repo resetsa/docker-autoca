@@ -1,0 +1,16 @@
+{
+    "CN": "mydb-sp_ecdsa",
+    "Hosts": [ "mydb-sp.home.lan", "mydb-sp", "192.168.40.31"],
+    "key": {
+        "algo": "ecdsa",
+        "size": 256
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}
