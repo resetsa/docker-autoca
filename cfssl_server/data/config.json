@@ -21,7 +21,7 @@
     "auth_keys": {
         "hidden-key": {
             "type": "standard",
-            "key": "bc90c3aef05e0588de8a6a00c8f4d133920d0cba7c3bd54871bf09a4a66a8378"
+            "key": "file:/data/auth.key"
         }
     },
     "remotes": {

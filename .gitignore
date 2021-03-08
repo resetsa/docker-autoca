@@ -4,3 +4,4 @@
 *.db
 *.crl
 cfssl_client/.ssh/
+auth.key
