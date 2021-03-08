@@ -1,4 +1,4 @@
 Create cert and keys - output basename.pem/basename-key.pem/basename.csr
 Need json defined - see in ./json directory.
 Example:
-cfssl gencert -remote https://autoca.home.lan:8888 -config ./config.json -profile custom -loglevel=0 json/centos7-t118.json | cfssljson -bare centos7-t118
+cfssl gencert -remote https://autoca:8888 -config ./config.json -profile custom -loglevel=0 json/centos7-t118.json | cfssljson -bare centos7-t118
