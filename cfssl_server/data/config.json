@@ -9,6 +9,13 @@
                 "expiry": "8760h",
                 "auth_key": "hidden-key"
                 },
+            "custom-short": {
+                "ocsp_url": "http://autoca.home.lan:8889",
+                "crl_url": "http://autoca.home.lan/crl/autoca.crl",
+                "usages": ["signing", "key encipherment", "server auth", "client auth"],
+                "expiry": "24h",
+                "auth_key": "hidden-key"
+            },
             "custom": {
                 "ocsp_url": "http://autoca.home.lan:8889",
                 "crl_url": "http://autoca.home.lan/crl/autoca.crl",

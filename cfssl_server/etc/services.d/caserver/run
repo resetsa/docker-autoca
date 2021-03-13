@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv sh
 
 /usr/bin/cfssl crl -db-config /data/db_config.json -ca=$CA_CERT -ca-key=$CA_KEY -loglevel=0 > /data/crl/autoca.crl
-s6-setuidgid daemon /usr/bin/cfssl serve -ca-bundle $MAIN_CA -ca-key $CA_KEY -ca $CA_CERT -config /data/config.json -tls-cert $TLS_CERT -tls-key $TLS_KEY -db-config /data/db_config.json -address 0.0.0.0 -responder $RESP_CERT -responder-key $RESP_KEY -loglevel=0
+s6-setuidgid daemon /usr/bin/cfssl serve -ca-bundle $CA_CERT -ca-key $CA_KEY -ca $CA_CERT -config /data/config.json -tls-cert $TLS_CERT -tls-key $TLS_KEY -db-config /data/db_config.json -address 0.0.0.0 -responder $RESP_CERT -responder-key $RESP_KEY -loglevel=0
