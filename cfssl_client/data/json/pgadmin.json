@@ -1,0 +1,17 @@
+{
+    "CN": "pgadmin",
+    "Hosts": [ "pgadmin.home.lan", "pgadmin", "192.168.32.129"],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}
+

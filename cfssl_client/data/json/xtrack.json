@@ -1,0 +1,17 @@
+{
+    "CN": "xtrack",
+    "Hosts": [ "xtrack.home.lan", "xtrack", "192.168.35.11"],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "C":  "RU",
+            "L":  "VOLGOGRAD",
+            "O":  "HOME",
+            "OU": "IT"
+        }
+    ]
+}
+
