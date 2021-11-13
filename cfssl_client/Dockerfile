@@ -1,10 +1,20 @@
-FROM cfssl/cfssl:1.6.1
+FROM cfssl/cfssl:1.6.1 as cfssl-image
+
+FROM debian:buster-slim
+
+MAINTAINER Sergey Stepanenko
+LABEL version="0.3"
+LABEL OS=Debian
 
 ENV GROUPNAME sas
 ENV USERNAME sas
 ENV DATADIR /data
 
-RUN apt-get update && apt-get install -y bash vim mc \
+COPY --from=cfssl-image /usr/bin/cfssl /usr/bin/cfssl
+RUN mkdir /etc/cfssl && chmod 755 -R /etc/cfssl
+
+RUN apt-get update && apt-get install -y vim ca-certificates --no-install-recommends \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && adduser --shell /bin/bash --disabled-password $USERNAME 
 
