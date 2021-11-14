@@ -1,28 +1,40 @@
-FROM cfssl/cfssl
+FROM cfssl/cfssl:1.6.1 as cfssl-image
+
+FROM debian:buster-slim
+
+MAINTAINER Sergey Stepanenko
+LABEL version="0.32"
+LABEL OS=Debian
+
 ENV GROUPNAME sas
 ENV USERNAME sas
 ENV DATADIR /data
-RUN apt-get update && apt-get install -y bash vim openssh-server mc \
-    && rm -rf /var/lib/apt/lists/*
-RUN adduser --shell /bin/bash --disabled-password $USERNAME
-RUN echo "Config ssh" \
-    && ssh-keygen -A \
-    && echo "Port 22" >> /etc/ssh/sshd_config \
-    && echo "PasswordAuthentication no" >> /etc/ssh/sshd_config \
-    && echo "AuthorizedKeysFile .ssh/authorized_keys" >> /etc/ssh/sshd_config \
-    && mkdir /run/sshd
-RUN echo "Prepare authorized_keys" \
-    && mkdir -p /home/$USERNAME/.ssh 
-COPY .ssh/authorized_keys /home/$USERNAME/.ssh/authorized_keys
-COPY .vimrc /home/$USERNAME
+ENV UID 1010
+ENV GID 1010
+
+COPY --from=cfssl-image /usr/bin/cfssl /usr/bin/cfssl
+COPY --from=cfssl-image /usr/bin/cfssljson /usr/bin/cfssljson
+COPY --from=cfssl-image /usr/bin/cfssl-bundle /usr/bin/cfssl-bundle
+COPY --from=cfssl-image /usr/bin/cfssl-certinfo /usr/bin/cfssl-certinfo
+COPY --from=cfssl-image /usr/bin/cfssl-newkey /usr/bin/cfssl-newkey
+COPY --from=cfssl-image /usr/bin/cfssl-scan /usr/bin/cfssl-scan
+COPY --from=cfssl-image /usr/bin/mkbundle /usr/bin/mkbundle
+COPY --from=cfssl-image /usr/bin/multirootca /usr/bin/multirootca
+RUN mkdir /etc/cfssl && chmod 755 -R /etc/cfssl
+
+RUN apt-get update && apt-get install -y vim ca-certificates --no-install-recommends \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && addgroup --gid $GID $GROUPNAME \
+    && adduser --uid $UID --gid $GID --shell /bin/bash --disabled-password $USERNAME 
+
 COPY *.crt /usr/local/share/ca-certificates/
 RUN echo "Update root ca" \
     && update-ca-certificates
-RUN echo "Edit rigths to authorized_keys" \
-    && chmod 600 /home/$USERNAME/.ssh/authorized_keys \ 
-    && chown -R $USERNAME:$GROUPNAME /home/$USERNAME/ \
-    && chmod 700 /home/$USERNAME/.ssh
-WORKDIR ["$DATADIR"]
-USER root
-EXPOSE 22
-ENTRYPOINT [ "/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+
+COPY .vimrc /home/$USERNAME
+
+VOLUME ["$DATADIR"]
+WORKDIR $DATADIR
+USER sas
+ENTRYPOINT [ "/bin/bash"]
